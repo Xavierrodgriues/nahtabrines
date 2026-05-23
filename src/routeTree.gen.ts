@@ -13,6 +13,10 @@ import { Route as ProductsRouteImport } from './routes/products'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProductsWaterSoftenerRouteImport } from './routes/products.water-softener'
+import { Route as ProductsPharmaGradeRouteImport } from './routes/products.pharma-grade'
+import { Route as ProductsIndustrialGradeRouteImport } from './routes/products.industrial-grade'
+import { Route as ProductsFoodGradeRouteImport } from './routes/products.food-grade'
 
 const ProductsRoute = ProductsRouteImport.update({
   id: '/products',
@@ -34,39 +38,96 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsWaterSoftenerRoute = ProductsWaterSoftenerRouteImport.update({
+  id: '/water-softener',
+  path: '/water-softener',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const ProductsPharmaGradeRoute = ProductsPharmaGradeRouteImport.update({
+  id: '/pharma-grade',
+  path: '/pharma-grade',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const ProductsIndustrialGradeRoute = ProductsIndustrialGradeRouteImport.update({
+  id: '/industrial-grade',
+  path: '/industrial-grade',
+  getParentRoute: () => ProductsRoute,
+} as any)
+const ProductsFoodGradeRoute = ProductsFoodGradeRouteImport.update({
+  id: '/food-grade',
+  path: '/food-grade',
+  getParentRoute: () => ProductsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/products/food-grade': typeof ProductsFoodGradeRoute
+  '/products/industrial-grade': typeof ProductsIndustrialGradeRoute
+  '/products/pharma-grade': typeof ProductsPharmaGradeRoute
+  '/products/water-softener': typeof ProductsWaterSoftenerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/products/food-grade': typeof ProductsFoodGradeRoute
+  '/products/industrial-grade': typeof ProductsIndustrialGradeRoute
+  '/products/pharma-grade': typeof ProductsPharmaGradeRoute
+  '/products/water-softener': typeof ProductsWaterSoftenerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/products': typeof ProductsRoute
+  '/products': typeof ProductsRouteWithChildren
+  '/products/food-grade': typeof ProductsFoodGradeRoute
+  '/products/industrial-grade': typeof ProductsIndustrialGradeRoute
+  '/products/pharma-grade': typeof ProductsPharmaGradeRoute
+  '/products/water-softener': typeof ProductsWaterSoftenerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/products'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/products'
+    | '/products/food-grade'
+    | '/products/industrial-grade'
+    | '/products/pharma-grade'
+    | '/products/water-softener'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/products'
-  id: '__root__' | '/' | '/about' | '/contact' | '/products'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/products'
+    | '/products/food-grade'
+    | '/products/industrial-grade'
+    | '/products/pharma-grade'
+    | '/products/water-softener'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/products'
+    | '/products/food-grade'
+    | '/products/industrial-grade'
+    | '/products/pharma-grade'
+    | '/products/water-softener'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  ProductsRoute: typeof ProductsRoute
+  ProductsRoute: typeof ProductsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -99,14 +160,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/water-softener': {
+      id: '/products/water-softener'
+      path: '/water-softener'
+      fullPath: '/products/water-softener'
+      preLoaderRoute: typeof ProductsWaterSoftenerRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/products/pharma-grade': {
+      id: '/products/pharma-grade'
+      path: '/pharma-grade'
+      fullPath: '/products/pharma-grade'
+      preLoaderRoute: typeof ProductsPharmaGradeRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/products/industrial-grade': {
+      id: '/products/industrial-grade'
+      path: '/industrial-grade'
+      fullPath: '/products/industrial-grade'
+      preLoaderRoute: typeof ProductsIndustrialGradeRouteImport
+      parentRoute: typeof ProductsRoute
+    }
+    '/products/food-grade': {
+      id: '/products/food-grade'
+      path: '/food-grade'
+      fullPath: '/products/food-grade'
+      preLoaderRoute: typeof ProductsFoodGradeRouteImport
+      parentRoute: typeof ProductsRoute
+    }
   }
 }
+
+interface ProductsRouteChildren {
+  ProductsFoodGradeRoute: typeof ProductsFoodGradeRoute
+  ProductsIndustrialGradeRoute: typeof ProductsIndustrialGradeRoute
+  ProductsPharmaGradeRoute: typeof ProductsPharmaGradeRoute
+  ProductsWaterSoftenerRoute: typeof ProductsWaterSoftenerRoute
+}
+
+const ProductsRouteChildren: ProductsRouteChildren = {
+  ProductsFoodGradeRoute: ProductsFoodGradeRoute,
+  ProductsIndustrialGradeRoute: ProductsIndustrialGradeRoute,
+  ProductsPharmaGradeRoute: ProductsPharmaGradeRoute,
+  ProductsWaterSoftenerRoute: ProductsWaterSoftenerRoute,
+}
+
+const ProductsRouteWithChildren = ProductsRoute._addFileChildren(
+  ProductsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  ProductsRoute: ProductsRoute,
+  ProductsRoute: ProductsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
