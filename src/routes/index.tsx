@@ -2,12 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/nahta/Header";
 import { Footer } from "@/components/nahta/Footer";
 import { Counter } from "@/components/nahta/Counter";
+import { ScrollReveal } from "@/components/nahta/ScrollReveal";
 import { ArrowRight } from "lucide-react";
 import icon1 from "@/assets/nahta/icon1.svg";
 import icon2 from "@/assets/nahta/icon2.svg";
 import icon3 from "@/assets/nahta/icon3.svg";
 import about from "@/assets/nahta/about.jpg";
 import range from "@/assets/nahta/range.jpg";
+import heroVideo from "@/assets/nahta/Salt Span_1080p50.mp4";
 import pFood from "@/assets/nahta/p-food.jpg";
 import pIndustrial from "@/assets/nahta/p-industrial.jpg";
 import pPharma from "@/assets/nahta/p-pharma.jpg";
@@ -59,167 +61,200 @@ function Home() {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Hero */}
+      {/* ── Hero ── */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <img src={range} alt="" className="h-full w-full object-cover" />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="h-full w-full object-cover"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-primary/20" />
         </div>
         <div className="relative mx-auto max-w-7xl px-4 py-28 md:py-40">
           <div className="max-w-2xl text-white">
-            <h1 className="text-4xl font-bold leading-tight md:text-6xl">
-              <span className="text-white">WELCOME TO THE</span>
-              <br />
-              <span className="text-brand">WORLD OF SALT</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-white/90 md:text-lg">
-              We are one of the largest salt Manufacturer & Exporter in the Kutch Near Kandla & Mundra Port. Our goal is to bridge the gap between Asian and African market in near future.
-            </p>
-            <a
-              href="#about"
-              className="mt-8 inline-flex items-center gap-2 rounded-md bg-brand px-6 py-3 font-semibold text-white shadow-lg transition hover:translate-y-[-2px] hover:bg-brand/90"
-            >
-              Explore More <ArrowRight className="h-4 w-4" />
-            </a>
+            <ScrollReveal animation="fade-right" duration={800}>
+              <h1 className="text-4xl font-bold leading-tight md:text-6xl">
+                <span className="text-white">WELCOME TO THE</span>
+                <br />
+                <span className="text-brand">WORLD OF SALT</span>
+              </h1>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-right" delay={180} duration={800}>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/90 md:text-lg">
+                We are one of the largest salt Manufacturer & Exporter in the Kutch Near Kandla & Mundra Port. Our goal is to bridge the gap between Asian and African market in near future.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal animation="fade-up" delay={340} duration={700}>
+              <a
+                href="#about"
+                className="mt-8 inline-flex items-center gap-2 rounded-md bg-brand px-6 py-3 font-semibold text-white shadow-lg transition hover:translate-y-[-2px] hover:bg-brand/90"
+              >
+                Explore More <ArrowRight className="h-4 w-4" />
+              </a>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Features */}
+      {/* ── Features ── */}
       <section className="relative z-10 -mt-16 px-4 md:-mt-20">
         <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-3">
           {features.map((f, i) => (
-            <div
-              key={f.title}
-              className={`rounded-lg p-8 shadow-xl transition hover:translate-y-[-4px] ${
-                i === 1 ? "bg-primary text-primary-foreground" : "bg-background"
-              }`}
-            >
-              <img src={f.icon} alt="" className="h-12 w-12" />
-              <h3 className={`mt-5 text-xl font-semibold ${i === 1 ? "text-white" : ""}`}>{f.title}</h3>
-              <p className={`mt-3 text-sm leading-relaxed ${i === 1 ? "text-white/85" : "text-muted-foreground"}`}>
-                {f.body}
-              </p>
-            </div>
+            <ScrollReveal key={f.title} animation="fade-up" delay={i * 120} duration={650}>
+              <div
+                className={`rounded-lg p-8 shadow-xl transition hover:translate-y-[-4px] ${
+                  i === 1 ? "bg-primary text-primary-foreground" : "bg-background"
+                }`}
+              >
+                <img src={f.icon} alt="" className="h-12 w-12" />
+                <h3 className={`mt-5 text-xl font-semibold ${i === 1 ? "text-white" : ""}`}>{f.title}</h3>
+                <p className={`mt-3 text-sm leading-relaxed ${i === 1 ? "text-white/85" : "text-muted-foreground"}`}>
+                  {f.body}
+                </p>
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
-      {/* About / Introduction */}
+      {/* ── About / Introduction ── */}
       <section id="about" className="px-4 py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
-          <div className="relative">
-            <img src={about} alt="Salt fields" className="rounded-lg shadow-xl" />
-            <div className="absolute -bottom-6 -right-6 hidden rounded-lg bg-brand px-8 py-6 text-white shadow-xl md:block">
-              <div className="text-4xl font-bold leading-none">
-                <Counter end={58} />
+          <ScrollReveal animation="fade-right" duration={750}>
+            <div className="relative">
+              <img src={about} alt="Salt fields" className="rounded-lg shadow-xl" />
+              <div className="absolute -bottom-6 -right-6 hidden rounded-lg bg-brand px-8 py-6 text-white shadow-xl md:block">
+                <div className="text-4xl font-bold leading-none">
+                  <Counter end={58} />
+                </div>
+                <div className="mt-1 text-sm uppercase tracking-wider">Years Of Experience</div>
               </div>
-              <div className="mt-1 text-sm uppercase tracking-wider">Years Of Experience</div>
             </div>
-          </div>
-          <div>
-            <p className="text-sm font-semibold text-brand">
-              <Spaced>Introduction</Spaced>
-            </p>
-            <h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
-              Welcome to the world of <span className="text-brand">SALT</span>
-            </h2>
-            <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
-              <p>Nahta Sea Brines is a wholly owned subsidiary of the M.N. Nahta Group of companies. It owns and operates two salt fields in the Kutch and Patan districts of Gujarat, Western India.</p>
-              <p>The Nahta salt fields, located approximately 40 kilometers and 90 kilometers from Kandla and Mundra Ports respectively, began operations in 1968.</p>
-              <p>Salt (sodium chloride) is an industrial chemical extracted from the sea by solar evaporation and is a fundamental product in chemical and food-related applications. Traditionally used as a preservative in the food manufacturing industry, salt is also the key raw material for chlor-alkali factories that produce caustic soda (sodium hydroxide), chlorine, and soda ash.</p>
-              <p>Nahta's two salt farms produce some of the highest quality solar marine salt (sea salt). Our fields are ideally located to export bulk shipments to Asian markets.</p>
-              <p>Our goal is to bridge the gap between the Asian and African markets in the near future.</p>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-left" delay={100} duration={750}>
+            <div>
+              <p className="text-sm font-semibold text-brand">
+                <Spaced>Introduction</Spaced>
+              </p>
+              <h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+                Welcome to the world of <span className="text-brand">SALT</span>
+              </h2>
+              <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
+                <p>Nahta Sea Brines is a wholly owned subsidiary of the M.N. Nahta Group of companies. It owns and operates two salt fields in the Kutch and Patan districts of Gujarat, Western India.</p>
+                <p>The Nahta salt fields, located approximately 40 kilometers and 90 kilometers from Kandla and Mundra Ports respectively, began operations in 1968.</p>
+                <p>Salt (sodium chloride) is an industrial chemical extracted from the sea by solar evaporation and is a fundamental product in chemical and food-related applications. Traditionally used as a preservative in the food manufacturing industry, salt is also the key raw material for chlor-alkali factories that produce caustic soda (sodium hydroxide), chlorine, and soda ash.</p>
+                <p>Nahta's two salt farms produce some of the highest quality solar marine salt (sea salt). Our fields are ideally located to export bulk shipments to Asian markets.</p>
+                <p>Our goal is to bridge the gap between the Asian and African markets in the near future.</p>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Range of products */}
+      {/* ── Range of products ── */}
       <section className="bg-secondary px-4 py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">
-              Our Range of <span className="text-brand">Salt Products</span>
-            </h2>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              At Nahta Sea Brines, quality and sustainability are at the core of our operations. We are committed to delivering products that meet the highest standards while minimizing our environmental footprint. Our dedicated team continually strives for excellence, ensuring that our customers receive only the best.
-            </p>
-          </div>
+          <ScrollReveal animation="fade-up" duration={650}>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-bold md:text-4xl">
+                Our Range of <span className="text-brand">Salt Products</span>
+              </h2>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                At Nahta Sea Brines, quality and sustainability are at the core of our operations. We are committed to delivering products that meet the highest standards while minimizing our environmental footprint. Our dedicated team continually strives for excellence, ensuring that our customers receive only the best.
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p) => (
-              <div key={p.title} className="group overflow-hidden rounded-lg bg-background shadow-md">
-                <div className="overflow-hidden">
-                  <img src={p.img} alt={p.title} className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-110" />
+            {products.map((p, i) => (
+              <ScrollReveal key={p.title} animation="zoom-in" delay={i * 80} duration={600}>
+                <div className="group overflow-hidden rounded-lg bg-background shadow-md">
+                  <div className="overflow-hidden">
+                    <img src={p.img} alt={p.title} className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-110" />
+                  </div>
+                  <div className="flex items-center justify-between p-5">
+                    <h3 className="text-lg font-semibold">{p.title}</h3>
+                    <span className="rounded-full bg-brand/10 p-2 text-brand transition group-hover:bg-brand group-hover:text-white">
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between p-5">
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
-                  <span className="rounded-full bg-brand/10 p-2 text-brand transition group-hover:bg-brand group-hover:text-white">
-                    <ArrowRight className="h-4 w-4" />
-                  </span>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ── */}
       <section className="relative overflow-hidden bg-primary px-4 py-20 text-primary-foreground">
         <div className="absolute inset-0 opacity-20">
           <img src={range} alt="" className="h-full w-full object-cover" />
         </div>
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
-          <div>
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
-              Kutch's Leading <span className="text-brand">Salt Exporter</span>
-            </h2>
-            <p className="mt-3 text-white/85">
-              We are the leading Salt exporter in Kutch (Gujarat) — Near Kandla / Mundra Port.
-            </p>
-          </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-md bg-brand px-7 py-3 font-semibold text-white transition hover:translate-y-[-2px] hover:bg-brand/90"
-          >
-            Contact Now <ArrowRight className="h-4 w-4" />
-          </Link>
+          <ScrollReveal animation="fade-right" duration={700}>
+            <div>
+              <h2 className="text-3xl font-bold text-white md:text-4xl">
+                Kutch's Leading <span className="text-brand">Salt Exporter</span>
+              </h2>
+              <p className="mt-3 text-white/85">
+                We are the leading Salt exporter in Kutch (Gujarat) — Near Kandla / Mundra Port.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal animation="fade-left" delay={150} duration={700}>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-md bg-brand px-7 py-3 font-semibold text-white transition hover:translate-y-[-2px] hover:bg-brand/90"
+            >
+              Contact Now <ArrowRight className="h-4 w-4" />
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
 
-      {/* Packaging products */}
+      {/* ── Packaging products ── */}
       <section className="px-4 py-24">
         <div className="mx-auto max-w-7xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold md:text-4xl">
-              Our <span className="text-brand">Products</span>
-            </h2>
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-              We are one of the leading concerns, engaged in manufacturing & supplying a wide range of industrial salt and its bye-products.
-            </p>
-          </div>
+          <ScrollReveal animation="fade-up" duration={650}>
+            <div className="mx-auto max-w-3xl text-center">
+              <h2 className="text-3xl font-bold md:text-4xl">
+                Our <span className="text-brand">Products</span>
+              </h2>
+              <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                We are one of the leading concerns, engaged in manufacturing & supplying a wide range of industrial salt and its bye-products.
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="mt-12 grid items-end gap-8 sm:grid-cols-3">
             {[pack1, pack2, pack3].map((src, i) => (
-              <div key={i} className="overflow-hidden rounded-lg">
-                <img src={src} alt="Product packaging" className="mx-auto h-auto w-full max-w-xs object-contain transition duration-500 hover:scale-105" />
-              </div>
+              <ScrollReveal key={i} animation="fade-up" delay={i * 130} duration={650}>
+                <div className="overflow-hidden rounded-lg">
+                  <img src={src} alt="Product packaging" className="mx-auto h-auto w-full max-w-xs object-contain transition duration-500 hover:scale-105" />
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* ── Stats ── */}
       <section className="bg-primary px-4 py-16 text-primary-foreground">
         <div className="mx-auto grid max-w-7xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-5xl font-bold text-brand md:text-6xl">
-                <Counter end={s.end} />
+          {stats.map((s, i) => (
+            <ScrollReveal key={s.label} animation="zoom-in" delay={i * 100} duration={600}>
+              <div className="text-center">
+                <div className="text-5xl font-bold text-brand md:text-6xl">
+                  <Counter end={s.end} />
+                </div>
+                <div className="mt-2 text-sm font-medium uppercase tracking-wider text-white/90">
+                  {s.label}
+                </div>
               </div>
-              <div className="mt-2 text-sm font-medium uppercase tracking-wider text-white/90">
-                {s.label}
-              </div>
-            </div>
+            </ScrollReveal>
           ))}
         </div>
       </section>

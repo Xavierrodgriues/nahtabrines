@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Twitter, Instagram, Mail, MapPin, Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/nahta/logo.png";
+import logoWhite from "@/assets/nahta/logo-white.png";
 
 const nav = [
   { label: "Home", to: "/" },
@@ -21,12 +22,14 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+
   return (
     <header className="w-full">
-      {/* Top bar */}
-      <div className="bg-secondary text-sm text-foreground/80">
-        <div className="mx-auto flex max-w-7xl flex-col items-start gap-2 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+      {/* Top bar — hidden on mobile */}
+      <div className="hidden sm:block bg-secondary text-sm text-foreground/80">
+        <div className="mx-auto flex max-w-7xl flex-row items-center justify-between px-4 py-3">
+          <div className="flex items-center gap-6">
             <span className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-brand" />
               D.B.Z-S-60, Near Municipal Office, Opp. Rotary Bhavan, Gandhidham, Gujarat 370201
@@ -50,6 +53,8 @@ export function Header() {
           <Link to="/" className="flex items-center">
             <img src={logo} alt="Nahta Sea Brines" className="h-12 w-auto sm:h-14" />
           </Link>
+
+          {/* Desktop nav */}
           <nav className="hidden items-center gap-8 lg:flex">
             {nav.map((item) => (
               <div key={item.label} className="group relative">
@@ -61,60 +66,105 @@ export function Header() {
                   {item.children && <ChevronDown className="h-4 w-4" />}
                 </Link>
                 {item.children && (
-                  <div className="invisible absolute left-0 top-full z-30 mt-2 w-56 rounded-md border border-border bg-background opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
-                    {item.children.map((c) => (
-                      <Link
-                        key={c.to}
-                        to={c.to}
-                        className="block px-4 py-3 text-sm text-primary hover:bg-secondary hover:text-brand"
-                      >
-                        {c.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
-          <button
-            className="lg:hidden text-primary"
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-          >
-            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
-        </div>
-        {open && (
-          <div className="border-t border-border bg-background lg:hidden">
-            <div className="mx-auto max-w-7xl px-4 py-3">
-              {nav.map((item) => (
-                <div key={item.label} className="py-1">
-                  <Link
-                    to={item.to}
-                    onClick={() => setOpen(false)}
-                    className="block py-2 font-medium text-primary"
-                  >
-                    {item.label}
-                  </Link>
-                  {item.children && (
-                    <div className="ml-4 border-l border-border pl-3">
+                  // Wrapper has no gap (pt-3 creates visual space inside) so hover never breaks
+                  <div className="invisible absolute left-0 top-full z-30 w-56 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                    <div className="rounded-md border border-border bg-background shadow-lg overflow-hidden">
                       {item.children.map((c) => (
                         <Link
                           key={c.to}
                           to={c.to}
-                          onClick={() => setOpen(false)}
-                          className="block py-2 text-sm text-muted-foreground hover:text-brand"
+                          className="block px-4 py-3 text-sm text-primary hover:bg-secondary hover:text-brand transition-colors"
                         >
                           {c.label}
                         </Link>
                       ))}
                     </div>
-                  )}
-                </div>
-              ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* Hamburger — mobile only */}
+          <button
+            className="lg:hidden text-primary p-1"
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
+        </div>
+      </div>
+
+      {/* ── Mobile Slide-in Drawer ── */}
+      {/* Backdrop */}
+      <div
+        className={`mobile-drawer-backdrop ${open ? "mobile-drawer-backdrop--open" : ""}`}
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Drawer panel */}
+      <div className={`mobile-drawer ${open ? "mobile-drawer--open" : ""}`} role="dialog" aria-modal="true" aria-label="Navigation menu">
+        {/* Drawer header */}
+        <div className="mobile-drawer-header">
+          <img src={logoWhite} alt="Nahta Sea Brines" className="h-12 w-auto" />
+          <button
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+            className="mobile-drawer-close"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Drawer nav links */}
+        <nav className="mobile-drawer-nav">
+          {nav.map((item) => (
+            <div key={item.label}>
+              {item.children ? (
+                <>
+                  <button
+                    className="mobile-drawer-link mobile-drawer-link--parent"
+                    onClick={() => setProductsOpen(!productsOpen)}
+                  >
+                    {item.label}
+                    <ChevronDown
+                      className={`mobile-drawer-chevron ${productsOpen ? "mobile-drawer-chevron--open" : ""}`}
+                    />
+                  </button>
+                  <div className={`mobile-drawer-submenu ${productsOpen ? "mobile-drawer-submenu--open" : ""}`}>
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.to}
+                        to={c.to}
+                        onClick={() => { setOpen(false); setProductsOpen(false); }}
+                        className="mobile-drawer-sublink"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <Link
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="mobile-drawer-link [&.active]:text-brand [&.active]:font-semibold"
+                >
+                  {item.label}
+                </Link>
+              )}
             </div>
-          </div>
-        )}
+          ))}
+        </nav>
+
+        {/* Drawer footer — social icons */}
+        <div className="mobile-drawer-footer">
+          <a href="#" aria-label="Facebook" className="mobile-drawer-social"><Facebook className="h-4 w-4" /></a>
+          <a href="#" aria-label="Twitter" className="mobile-drawer-social"><Twitter className="h-4 w-4" /></a>
+          <a href="#" aria-label="Instagram" className="mobile-drawer-social"><Instagram className="h-4 w-4" /></a>
+        </div>
       </div>
     </header>
   );
