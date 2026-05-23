@@ -3,7 +3,7 @@ import { Header } from "@/components/nahta/Header";
 import { Footer } from "@/components/nahta/Footer";
 import { ScrollReveal } from "@/components/nahta/ScrollReveal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import range from "@/assets/nahta/range.jpg";
+import foodHeroBg from "@/assets/nahta/about.jpg";
 import pFood from "@/assets/nahta/p-food.jpg";
 import logo from "@/assets/nahta/logo.png";
 import pack1 from "@/assets/nahta/pack1.png";
@@ -52,11 +52,12 @@ function FoodGrade() {
       <section
         className="about-hero"
         style={{
-          backgroundImage: `url(${range})`,
+          backgroundImage: `url(${foodHeroBg})`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "var(--primary)",
         }}
       >
         <div className="about-hero-overlay" />
@@ -84,7 +85,7 @@ function FoodGrade() {
           <div className="pd-main">
             {/* Product image */}
             <ScrollReveal animation="zoom-in" duration={800} className="pd-img-wrap">
-              <img src={pFood} alt="Food Grade Salt" className="pd-img" />
+              <img src={pFood} alt="Food Grade Salt" className="pd-img" loading="lazy" />
             </ScrollReveal>
 
             {/* Extensive Experience */}
@@ -143,7 +144,7 @@ function FoodGrade() {
                   duration={600}
                   className="pd-pack-item"
                 >
-                  <img src={src} alt={`Salt packaging ${i + 1}`} className="pd-pack-img" />
+                  <img src={src} alt={`Salt packaging ${i + 1}`} className="pd-pack-img" loading="lazy" />
                 </ScrollReveal>
               ))}
             </div>
@@ -181,7 +182,7 @@ function FoodGrade() {
             {/* Need Help widget */}
             <ScrollReveal animation="fade-left" delay={150} duration={750} className="pd-widget pd-widget--light">
               <div className="pd-widget-logo">
-                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" />
+                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" loading="lazy" />
               </div>
               <h3 className="pd-widget-help-title">Need Help ?</h3>
               <p className="pd-widget-help-body">

@@ -4,7 +4,7 @@ import { Footer } from "@/components/nahta/Footer";
 import { Counter } from "@/components/nahta/Counter";
 import { ScrollReveal } from "@/components/nahta/ScrollReveal";
 import { ArrowRight, CheckCircle2, Globe, Truck, Award } from "lucide-react";
-import range from "@/assets/nahta/range.jpg";
+import aboutScaled from "@/assets/nahta/about-scaled.jpg";
 import about from "@/assets/nahta/about.jpg";
 import pFood from "@/assets/nahta/p-food.jpg";
 import pPharma from "@/assets/nahta/p-pharma.jpg";
@@ -59,11 +59,12 @@ function About() {
       <section
         className="about-hero"
         style={{
-          backgroundImage: `url(${range})`,
+          backgroundImage: `url(${aboutScaled})`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "var(--primary)",
         }}
       >
         <div className="about-hero-overlay" />
@@ -128,13 +129,13 @@ function About() {
           {/* Right: stacked images + badge */}
           <ScrollReveal animation="fade-left" delay={120} duration={750} className="about-images-col">
             <div className="about-img-stack">
-              <img src={pFood} alt="Salt harvesting" className="about-img-top" />
+              <img src={pFood} alt="Salt harvesting" className="about-img-top" loading="lazy" />
               <div className="about-img-dots" aria-hidden="true">
                 {Array.from({ length: 36 }).map((_, i) => (
                   <span key={i} className="about-dot" />
                 ))}
               </div>
-              <img src={pPharma} alt="Salt product" className="about-img-bottom" />
+              <img src={pPharma} alt="Salt product" className="about-img-bottom" loading="lazy" />
               <div className="about-badge">
                 <span className="about-badge-number">
                   <Counter end={58} />+
@@ -171,7 +172,7 @@ function About() {
         <div className="about-expertise-inner">
           {/* Left: image */}
           <ScrollReveal animation="fade-right" duration={750} className="about-expertise-img-wrap">
-            <img src={about} alt="Salt in bowl" className="about-expertise-img" />
+            <img src={about} alt="Salt in bowl" className="about-expertise-img" loading="lazy" />
           </ScrollReveal>
 
           {/* Right: text */}

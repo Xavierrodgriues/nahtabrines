@@ -33,6 +33,7 @@ function Contact() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "var(--primary)",
         }}
       >
         <div className="about-hero-overlay" />

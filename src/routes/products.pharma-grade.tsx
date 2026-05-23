@@ -3,8 +3,8 @@ import { Header } from "@/components/nahta/Header";
 import { Footer } from "@/components/nahta/Footer";
 import { ScrollReveal } from "@/components/nahta/ScrollReveal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import range from "@/assets/nahta/range.jpg";
 import pPharma from "@/assets/nahta/p-pharma.jpg";
+import cleanSaltBody from "@/assets/nahta/about.jpg";
 import logo from "@/assets/nahta/logo.png";
 
 export const Route = createFileRoute("/products/pharma-grade")({
@@ -49,11 +49,12 @@ function PharmaGrade() {
       <section
         className="about-hero"
         style={{
-          backgroundImage: `url(${range})`,
+          backgroundImage: `url(${pPharma})`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "var(--primary)",
         }}
       >
         <div className="about-hero-overlay" />
@@ -81,7 +82,7 @@ function PharmaGrade() {
           <div className="pd-main">
             {/* Product image */}
             <ScrollReveal animation="zoom-in" duration={800} className="pd-img-wrap">
-              <img src={pPharma} alt="Pharma Grade Sodium Salt" className="pd-img" />
+              <img src={cleanSaltBody} alt="Pharma Grade Sodium Salt" className="pd-img" loading="lazy" />
             </ScrollReveal>
 
             {/* Heading */}
@@ -165,7 +166,7 @@ function PharmaGrade() {
             {/* Need Help widget */}
             <ScrollReveal animation="fade-left" delay={150} duration={750} className="pd-widget pd-widget--light">
               <div className="pd-widget-logo">
-                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" />
+                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" loading="lazy" />
               </div>
               <h3 className="pd-widget-help-title">Need Help ?</h3>
               <p className="pd-widget-help-body">

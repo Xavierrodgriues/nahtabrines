@@ -3,7 +3,7 @@ import { Header } from "@/components/nahta/Header";
 import { Footer } from "@/components/nahta/Footer";
 import { ScrollReveal } from "@/components/nahta/ScrollReveal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import range from "@/assets/nahta/range.jpg";
+import industrialHeroBg from "@/assets/nahta/p-textile.jpg";
 import pIndustrial from "@/assets/nahta/p-industrial.jpg";
 import logo from "@/assets/nahta/logo.png";
 
@@ -48,11 +48,12 @@ function IndustrialGrade() {
       <section
         className="about-hero"
         style={{
-          backgroundImage: `url(${range})`,
+          backgroundImage: `url(${industrialHeroBg})`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "var(--primary)",
         }}
       >
         <div className="about-hero-overlay" />
@@ -80,7 +81,7 @@ function IndustrialGrade() {
           <div className="pd-main">
             {/* Product image */}
             <ScrollReveal animation="zoom-in" duration={800} className="pd-img-wrap">
-              <img src={pIndustrial} alt="Trade & Industrial Grade Salt" className="pd-img" />
+              <img src={pIndustrial} alt="Trade & Industrial Grade Salt" className="pd-img" loading="lazy" />
             </ScrollReveal>
 
             {/* Industrial Grade Use */}
@@ -159,7 +160,7 @@ function IndustrialGrade() {
             {/* Need Help widget */}
             <ScrollReveal animation="fade-left" delay={150} duration={750} className="pd-widget pd-widget--light">
               <div className="pd-widget-logo">
-                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" />
+                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" loading="lazy" />
               </div>
               <h3 className="pd-widget-help-title">Need Help ?</h3>
               <p className="pd-widget-help-body">

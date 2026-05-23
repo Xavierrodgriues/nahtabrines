@@ -3,7 +3,6 @@ import { Header } from "@/components/nahta/Header";
 import { Footer } from "@/components/nahta/Footer";
 import { ScrollReveal } from "@/components/nahta/ScrollReveal";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import range from "@/assets/nahta/range.jpg";
 import pWater from "@/assets/nahta/p-water.jpg";
 import pPvd from "@/assets/nahta/p-pvd.jpg";
 import logo from "@/assets/nahta/logo.png";
@@ -50,11 +49,12 @@ function WaterSoftener() {
       <section
         className="about-hero"
         style={{
-          backgroundImage: `url(${range})`,
+          backgroundImage: `url(${pPvd})`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          backgroundColor: "var(--primary)",
         }}
       >
         <div className="about-hero-overlay" />
@@ -82,7 +82,7 @@ function WaterSoftener() {
           <div className="pd-main">
             {/* Main product image */}
             <ScrollReveal animation="zoom-in" duration={800} className="pd-img-wrap">
-              <img src={pWater} alt="Water Softener Salt" className="pd-img" />
+              <img src={pWater} alt="Water Softener Salt" className="pd-img" loading="lazy" />
             </ScrollReveal>
 
             {/* Heading */}
@@ -133,7 +133,7 @@ function WaterSoftener() {
 
             {/* Salt tablet inline image */}
             <ScrollReveal animation="zoom-in" duration={800} className="pd-inline-img-wrap">
-              <img src={pPvd} alt="Salt Tablet" className="pd-inline-img" />
+              <img src={pPvd} alt="Salt Tablet" className="pd-inline-img" loading="lazy" />
             </ScrollReveal>
 
             <ScrollReveal animation="fade-up" duration={700}>
@@ -167,7 +167,7 @@ function WaterSoftener() {
             {/* Need Help widget */}
             <ScrollReveal animation="fade-left" delay={150} duration={750} className="pd-widget pd-widget--light">
               <div className="pd-widget-logo">
-                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" />
+                <img src={logo} alt="Nahta Sea Brines" className="pd-widget-logo-img" loading="lazy" />
               </div>
               <h3 className="pd-widget-help-title">Need Help ?</h3>
               <p className="pd-widget-help-body">

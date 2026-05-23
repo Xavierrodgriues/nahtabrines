@@ -62,16 +62,19 @@ function Home() {
       <Header />
 
       {/* ── Hero ── */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden" style={{ backgroundColor: "var(--primary)" }}>
         <div className="absolute inset-0">
           <video
             autoPlay
             loop
             muted
             playsInline
+            preload="auto"
+            poster={range}
             className="h-full w-full object-cover"
           >
             <source src={heroVideo} type="video/mp4" />
+            <img src={range} alt="Nahta Sea Brines Video Background" className="h-full w-full object-cover" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-primary/20" />
         </div>
@@ -111,7 +114,7 @@ function Home() {
                   i === 1 ? "bg-primary text-primary-foreground" : "bg-background"
                 }`}
               >
-                <img src={f.icon} alt="" className="h-12 w-12" />
+                <img src={f.icon} alt="" className="h-12 w-12" loading="lazy" />
                 <h3 className={`mt-5 text-xl font-semibold ${i === 1 ? "text-white" : ""}`}>{f.title}</h3>
                 <p className={`mt-3 text-sm leading-relaxed ${i === 1 ? "text-white/85" : "text-muted-foreground"}`}>
                   {f.body}
@@ -127,7 +130,7 @@ function Home() {
         <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
           <ScrollReveal animation="fade-right" duration={750}>
             <div className="relative">
-              <img src={about} alt="Salt fields" className="rounded-lg shadow-xl" />
+              <img src={about} alt="Salt fields" className="rounded-lg shadow-xl" loading="lazy" />
               <div className="absolute -bottom-6 -right-6 hidden rounded-lg bg-brand px-8 py-6 text-white shadow-xl md:block">
                 <div className="text-4xl font-bold leading-none">
                   <Counter end={58} />
@@ -174,7 +177,7 @@ function Home() {
               <ScrollReveal key={p.title} animation="zoom-in" delay={i * 80} duration={600}>
                 <div className="group overflow-hidden rounded-lg bg-background shadow-md">
                   <div className="overflow-hidden">
-                    <img src={p.img} alt={p.title} className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-110" />
+                    <img src={p.img} alt={p.title} className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-110" loading="lazy" />
                   </div>
                   <div className="flex items-center justify-between p-5">
                     <h3 className="text-lg font-semibold">{p.title}</h3>
@@ -192,7 +195,7 @@ function Home() {
       {/* ── CTA ── */}
       <section className="relative overflow-hidden bg-primary px-4 py-20 text-primary-foreground">
         <div className="absolute inset-0 opacity-20">
-          <img src={range} alt="" className="h-full w-full object-cover" />
+          <img src={range} alt="" className="h-full w-full object-cover" loading="lazy" />
         </div>
         <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 text-center md:flex-row md:justify-between md:text-left">
           <ScrollReveal animation="fade-right" duration={700}>
@@ -233,7 +236,7 @@ function Home() {
             {[pack1, pack2, pack3].map((src, i) => (
               <ScrollReveal key={i} animation="fade-up" delay={i * 130} duration={650}>
                 <div className="overflow-hidden rounded-lg">
-                  <img src={src} alt="Product packaging" className="mx-auto h-auto w-full max-w-xs object-contain transition duration-500 hover:scale-105" />
+                  <img src={src} alt="Product packaging" className="mx-auto h-auto w-full max-w-xs object-contain transition duration-500 hover:scale-105" loading="lazy" />
                 </div>
               </ScrollReveal>
             ))}
