@@ -6,16 +6,6 @@ import { ArrowRight, Mail, MapPin, Facebook, Twitter, Instagram } from "lucide-r
 import range from "@/assets/nahta/range.jpg";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact Us | Nahta Sea Brines" },
-      {
-        name: "description",
-        content:
-          "Get in touch with Nahta Sea Brines. Find our address, email, and location map. We'd love to hear from you.",
-      },
-    ],
-  }),
   component: Contact,
 });
 

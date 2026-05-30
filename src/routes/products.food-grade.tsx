@@ -11,16 +11,6 @@ import pack2 from "@/assets/nahta/pack2.png";
 import pack3 from "@/assets/nahta/pack3.png";
 
 export const Route = createFileRoute("/products/food-grade")({
-  head: () => ({
-    meta: [
-      { title: "Food Grade Salt | Nahta Sea Brines" },
-      {
-        name: "description",
-        content:
-          "Premium food-grade salt by Nahta Sea Brines — produced through solar evaporation and refined to the highest purity standards for culinary and preservation use.",
-      },
-    ],
-  }),
   component: FoodGrade,
 });
 

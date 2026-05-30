@@ -8,16 +8,6 @@ import pIndustrial from "@/assets/nahta/p-industrial.jpg";
 import logo from "@/assets/nahta/logo.png";
 
 export const Route = createFileRoute("/products/industrial-grade")({
-  head: () => ({
-    meta: [
-      { title: "Trade & Industrial Grade Salt | Nahta Sea Brines" },
-      {
-        name: "description",
-        content:
-          "High-purity trade and industrial grade salt by Nahta Sea Brines — suited for chemical manufacturing, de-icing, textile processing and a wide range of industrial applications.",
-      },
-    ],
-  }),
   component: IndustrialGrade,
 });
 

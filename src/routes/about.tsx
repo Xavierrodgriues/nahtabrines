@@ -10,16 +10,6 @@ import pFood from "@/assets/nahta/p-food.jpg";
 import pPharma from "@/assets/nahta/p-pharma.jpg";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Us | Nahta Sea Brines" },
-      {
-        name: "description",
-        content:
-          "Learn about Nahta Sea Brines — a wholly owned subsidiary of M.N. Nahta Group with 58+ years of excellence in salt manufacturing and export.",
-      },
-    ],
-  }),
   component: About,
 });
 

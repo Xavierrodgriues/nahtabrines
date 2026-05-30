@@ -8,16 +8,6 @@ import pPvd from "@/assets/nahta/p-pvd.jpg";
 import logo from "@/assets/nahta/logo.png";
 
 export const Route = createFileRoute("/products/water-softener")({
-  head: () => ({
-    meta: [
-      { title: "Water Softener Salt | Nahta Sea Brines" },
-      {
-        name: "description",
-        content:
-          "High-grade water softener salt and salt tablets by Nahta Sea Brines — designed to optimize water softening systems for residential and industrial use.",
-      },
-    ],
-  }),
   component: WaterSoftener,
 });
 

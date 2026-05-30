@@ -8,16 +8,6 @@ import cleanSaltBody from "@/assets/nahta/about.jpg";
 import logo from "@/assets/nahta/logo.png";
 
 export const Route = createFileRoute("/products/pharma-grade")({
-  head: () => ({
-    meta: [
-      { title: "Pharma Grade Sodium Salt | Nahta Sea Brines" },
-      {
-        name: "description",
-        content:
-          "Ultra-pure pharmaceutical-grade sodium chloride by Nahta Sea Brines — manufactured under stringent quality controls for medical, laboratory, and pharmaceutical applications.",
-      },
-    ],
-  }),
   component: PharmaGrade,
 });
 

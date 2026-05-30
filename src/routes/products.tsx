@@ -3,7 +3,6 @@ import { Header } from "@/components/nahta/Header";
 import { Footer } from "@/components/nahta/Footer";
 
 export const Route = createFileRoute("/products")({
-  head: () => ({ meta: [{ title: "Our Products | Nahta Sea Brines" }] }),
   beforeLoad: ({ location }) => {
     // Redirect /products exactly to food-grade detail page
     if (location.pathname === "/products" || location.pathname === "/products/") {

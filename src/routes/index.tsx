@@ -21,12 +21,6 @@ import pack2 from "@/assets/nahta/pack2.png";
 import pack3 from "@/assets/nahta/pack3.png";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Nahta Sea Brines | Salt Manufacturer & Exporter, Kutch Gujarat" },
-      { name: "description", content: "Nahta Sea Brines — leading salt manufacturer & exporter in Kutch near Kandla & Mundra Port. Food, industrial, pharma & water softener salt since 1968." },
-    ],
-  }),
   component: Home,
 });
 
